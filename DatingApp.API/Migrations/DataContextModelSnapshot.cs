@@ -87,7 +87,7 @@ namespace DatingApp.API.Migrations
             modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
                     b.HasOne("DatingApp.API.Models.User", "User")
-                        .WithMany("MyProperty")
+                        .WithMany("Photos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
