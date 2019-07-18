@@ -34,7 +34,7 @@ namespace DatingApp.API.Controllers
             Account acc = new Account(
                 _cloudinaryConfig.Value.CloudName,
                 _cloudinaryConfig.Value.ApiKey,
-                _cloudinaryConfig.Value.ApiSecrets
+                _cloudinaryConfig.Value.ApiSecret
             );
 
             _cloudinary = new Cloudinary(acc);
@@ -50,7 +50,7 @@ namespace DatingApp.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId,
-         PhotoForCreatingDto photoForCreatinDto){
+         [FromForm]PhotoForCreatingDto photoForCreatinDto){
              if(userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                return Unauthorized();
                
@@ -64,7 +64,8 @@ namespace DatingApp.API.Controllers
                 using (var stream = file.OpenReadStream()){
                     var uploadParams = new ImageUploadParams(){
                         File = new FileDescription(file.Name, stream),
-                        Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("Face")
+                        Transformation = new Transformation()
+                        .Width(500).Height(500).Crop("fill").Gravity("face")
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
