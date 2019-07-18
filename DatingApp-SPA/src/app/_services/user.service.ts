@@ -18,11 +18,11 @@ baseUrl = environment.apiUrl;
 
 constructor(private http: HttpClient) { }
 
-getUsers(): Observable<User[]>{
+getUsers(): Observable<User[]> {
   return this.http.get<User[]>(this.baseUrl + 'users', httpOptons);
 }
 
-getUser(id): Observable<User>{
+getUser(id): Observable<User> {
   return this.http.get<User>(this.baseUrl + 'users/' + id, httpOptons);
 }
 
