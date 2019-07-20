@@ -20,8 +20,9 @@ namespace DatingApp.API.Helpers
             var camelCaseFormatter = new JsonSerializerSettings();
             camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            response.Headers.Add("Pagionation", JsonConvert.SerializeObject(paginationHeader, camelCaseFormatter));
-            response.Headers.Add("Access-Control-Expose-Headers","Application-Error");
+            response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCaseFormatter));
+            response.Headers.Add("Access-Control-Expose-Headers","Pagination");
+            response.Headers.Add("Access-Control-Allow-Origin","*");
 
         }
 
