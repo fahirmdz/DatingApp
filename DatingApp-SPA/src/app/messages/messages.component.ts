@@ -4,6 +4,7 @@ import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
+import { Message } from '../_models/message';
 
 @Component({
   selector: 'app-messages',
